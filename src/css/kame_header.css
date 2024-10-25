@@ -6,6 +6,7 @@
   border-bottom: 1px solid #ccc;
   margin-top: 0px;
   position: fixed;
+  z-index: 1000;
   top: 0;
 }
 
@@ -172,6 +173,6 @@
   opacity: 1;
 }
 
-.kame_header_005:hover .kame_header_005_button:hover > p {
+.kame_header_005:hover .kame_header_005_button:hover>p {
   font-weight: bold;
 }

@@ -255,15 +255,16 @@ function HomePage() {
           @import
           url('https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@700&display=swap');
         </style>
-        <p
+        {/* <p
           style={{
             fontSize: "6.0em",
-            fontFamily: "Qwitcher Grypen",
+            fontFamily: "Noto Sans",
+            // fontFamily: "Qwitcher Grypen",
             // height: "0.5em",
           }}
         >
           &nbsp;&nbsp;Deep Magazine&nbsp;&nbsp;
-        </p>
+        </p> */}
 
         {/* <iframe style={{aspectRatio:"8/4"}} width="80%" src="https://www.youtube.com/embed/oJKhbRFKIjQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> */}
 
@@ -275,30 +276,23 @@ function HomePage() {
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
           navigation
-          scrollbar={{ draggable: true }}
           autoplay={{
             delay: 4000,
             disableOnInteraction: false,
           }}
-          height={"1500px"}
+          style={{ height: "calc(80vh - 60px)" }} // ヘッダーとフッターの高さを差し引いた高さ
         >
           {imageUrls.map((url, index) => (
             <SwiperSlide key={index}>
               <img
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                style={{ width: "100%", height: "100%", objectFit: "contain" }}
                 src={url}
                 alt={`Slide ${index + 1}`}
               />
             </SwiperSlide>
           ))}
-
-          {/* <div className="autoplay-progress" slot="container-end">
-          <svg viewBox="0 0 48 48" ref={progressCircle}>
-            <circle cx="24" cy="24" r="20"></circle>
-          </svg>
-          <span ref={progressContent}></span>
-        </div> */}
         </Swiper>
+
 
         {/* <img
         style={{ width: "75%", cursor: "grab" }}

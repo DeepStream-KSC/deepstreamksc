@@ -16,7 +16,7 @@ function Header() {
               <Link to="/" style={{ textDecoration: "none" }}>
                 <p
                   className="kame_font_001"
-                  style={{ fontFamily: "Comic Sans MS", color: "black" }}
+                  style={{ fontFamily: "Roboto", color: "black" }}
                 >
                   Deep Stream
                 </p>
