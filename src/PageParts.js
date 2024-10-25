@@ -57,14 +57,14 @@ function Footer() {
             <Link to="/reservation" class="tab">
               部室予約
             </Link>
-            <Link to="/key" class="tab">
-              鍵管理
+            <Link to="/notification" class="tab">
+              提出書類
             </Link>
             <Link to="/calendar" class="tab">
               イベント
             </Link>
-            <Link to="/tool" class="tab">
-              ツール
+            <Link to="/command" class="tab">
+              コマンド
             </Link>
           </div>
           <div class="footer">
@@ -80,13 +80,13 @@ function Footer() {
               部室予約
             </Link>
             <Link to="/login" class="tab">
-              鍵管理
+              提出書類
             </Link>
             <Link to="/login" class="tab">
               イベント
             </Link>
             <Link to="/login" class="tab">
-              ツール
+              コマンド
             </Link>
           </div>
           <div class="footer">

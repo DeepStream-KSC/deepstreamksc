@@ -52,6 +52,7 @@ async function fetchFilesFromDeepMagazine() {
 }
 
 function HomePage() {
+  const app_version = "3.1.3";
   const isMobile = useIsMobile();
 
   /* スプラッシュスクリーンの表示設定 */
@@ -244,7 +245,7 @@ function HomePage() {
         <span></span>
         <span></span>
         <p style={{ fontSize: "2.0em" }}>Deep Stream</p>
-        <p style={{ fontSize: "1.5em" }}>ver 3.1.1</p>
+        <p style={{ fontSize: "1.5em" }}>ver {app_version}</p>
       </div>
     </div>
   ) : isMobile ? (
