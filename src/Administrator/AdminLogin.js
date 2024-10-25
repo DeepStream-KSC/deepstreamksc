@@ -1,95 +1,96 @@
-import React, { useState } from 'react'
-import { Footer, Header } from '../PageParts'
+import React, { useState } from 'react';
+import { Footer, Header } from '../PageParts';
 import { Link } from 'react-router-dom';
 import { auth } from '../firebase';
 
 function AdminLogin() {
-    const [Command, setCommand] = useState("");
-    const adminCommand = "IamKameKingdom";
-    var date = new Date;
-    var NowHour = date.getHours();
-    var NowMinute = date.getMinutes();
+    const [command, setCommand] = useState('');
+    const adminCommand = 'iamkamekingdom';
+    const { displayName } = auth.currentUser || {};
+    const now = new Date();
+    const nowTime = `${now.getHours()}時${now.getMinutes()}分`;
 
-    const handleCommand = (e) => {
-        setCommand(e.target.value);
-    }
+    const handleCommand = (e) => setCommand(e.target.value);
+    const lowerCommand = command.toLowerCase();
+
+    const links = {
+        reserve: { path: '/reservation', label: '部室予約' },
+        reservation: { path: '/reservation', label: '部室予約' },
+        calendar: { path: '/calendar', label: 'カレンダー' },
+        event: { path: '/notification', label: 'イベント' },
+        home: { path: '/', label: 'ホーム' },
+        tool: { path: '/tool', label: 'ツール' },
+        youtube: {
+            path: 'https://www.youtube.com/channel/UCg9WNSATUeU8g5p2O4mHS_w',
+            label: 'YouTube',
+            external: true,
+        },
+        instagram: {
+            path: 'https://www.instagram.com/deepstreamksc/',
+            label: 'Instagram',
+            external: true,
+        },
+        twitter: {
+            path: 'https://www.instagram.com/deepstreamksc/',
+            label: 'Instagram',
+            external: true,
+            error: 'あ、間違えちゃった...',
+        },
+    };
+
+    const messages = {
+        game: '開発中...お楽しみに',
+        hello: `こんにちは。${displayName}さん`,
+        'good morning': `おはようござんす${displayName}さん`,
+        'good evening': `こんばんは。${displayName}さん`,
+        'good night': `おやすみなさい${displayName}さん`,
+        time: `現在時刻は${nowTime}です`,
+        kame: 'こんにちは、かめです🐢',
+        cmd: '遊び心で作ってみました🐢',
+        command: '遊び心で作ってみました🐢',
+        deep: 'DeepStream へようこそ',
+    };
+
+    const renderLink = (link) =>
+        link.external ? (
+            <a href={link.path} className="kame_button_light_blue">
+                <p className="kame_font_002">{link.label}</p>
+            </a>
+        ) : (
+            <Link to={link.path} className="kame_button_light_blue">
+                <p className="kame_font_002">{link.label}</p>
+            </Link>
+        );
+
     return (
         <div>
             <Header />
-            <p className="kame_font_003">コマンド</p><br />
+            <br /><br />
             <center>
-                <label>
-                    <textarea type="text" className="kame_textarea_small" onChange={handleCommand} placeholder="" value={Command} /><br /><br />
-                </label>
+                <textarea
+                    type="text"
+                    className="kame_textarea_small"
+                    onChange={handleCommand}
+                    value={command}
+                    placeholder=""
+                />
             </center>
             <br /><br />
-            {Command === adminCommand && (
-                <Link to="/adminhome" className="kame_button_light_blue">
-                    <p className="kame_font_002">管理者画面</p>
-                </Link>
-            )}
-            {Command.toLowerCase() === "game" && (
-                <p class="kame_font_003">現在開発中...<br />お楽しみに</p>
-            )}
-            {Command.toLowerCase() === "hello" && (<p class="kame_font_003">こんにちは。<br />{auth.currentUser.displayName}さん<br /></p>)}
-            {Command.toLowerCase() === "good morning" && (<p class="kame_font_003">おはようござんす<br />{auth.currentUser.displayName}さん<br /></p>)}
-            {Command.toLowerCase() === "good evening" && (<p class="kame_font_003">こんばんは。<br />{auth.currentUser.displayName}さん</p>)}
-            {Command.toLowerCase() === "good night" && (<p class="kame_font_003">おやすみなさい<br />{auth.currentUser.displayName}さん<br /></p>)}
-            {Command.toLowerCase() === "time" && (<p class="kame_font_003">現在時刻は<br />{NowHour}時{NowMinute}分です<br /></p>)}
-            {Command.toLowerCase() === "kame" && (<p class="kame_font_003">こんにちは、かめです🐢</p>)}
-            {Command.toLowerCase() === "cmd" && (<p class="kame_font_003">遊び心で作ってみました🐢</p>)}
-            {Command.toLowerCase() === "command" && (<p class="kame_font_003">遊び心で作ってみました🐢</p>)}
-            {Command.toLowerCase() === "reserve" && (
-                <Link to="/reservation" className="kame_button_light_blue">
-                    <p className="kame_font_002">部室予約</p>
-                </Link>
-            )}
-            {Command.toLowerCase() === "reservation" && (
-                <Link to="/reservation" className="kame_button_light_blue">
-                    <p className="kame_font_002">部室予約</p>
-                </Link>
-            )}
-            {Command.toLowerCase() === "calendar" && (
-                <Link to="/calendar" className="kame_button_light_blue">
-                    <p className="kame_font_002">カレンダー</p>
-                </Link>
-            )}
-            {Command.toLowerCase() === "event" && (
-                <Link to="/notification" className="kame_button_light_blue">
-                    <p className="kame_font_002">イベント</p>
-                </Link>
-            )}
-            {Command.toLowerCase() === "home" && (
-                <Link to="/" className="kame_button_light_blue">
-                    <p className="kame_font_002">ホーム</p>
-                </Link>
-            )}
-            {Command.toLowerCase() === "tool" && (
-                <Link to="/tool" className="kame_button_light_blue">
-                    <p className="kame_font_002">ツール</p>
-                </Link>
-            )}
-            {Command.toLowerCase() === "youtube" && (
-                <a href="https://www.youtube.com/channel/UCg9WNSATUeU8g5p2O4mHS_w" className="kame_button_light_blue">
-                    <p className="kame_font_002">YouTube</p>
-                </a>
-            )}
-            {Command.toLowerCase() === "instagram" && (
-                <a href="https://www.instagram.com/deepstreamksc/" className="kame_button_light_blue">
-                    <p className="kame_font_002">Instagram</p>
-                </a>
-            )}
-            {Command.toLowerCase() === "twitter" && (
+
+            {command === adminCommand && renderLink({ path: '/adminhome', label: '管理者画面' })}
+
+            {messages[lowerCommand] && <p className="kame_font_003">{messages[lowerCommand]}</p>}
+
+            {links[lowerCommand] && (
                 <>
-                    <a href="https://www.instagram.com/deepstreamksc/" className="kame_button_light_blue">
-                        <p className="kame_font_002">Instagram</p></a>
-                    <p class="kame_font_003">あ、間違えちゃった...</p>
+                    {renderLink(links[lowerCommand])}
+                    {links[lowerCommand].error && <p className="kame_font_003">{links[lowerCommand].error}</p>}
                 </>
             )}
 
             <Footer />
         </div>
-    )
+    );
 }
 
-export default AdminLogin
+export default AdminLogin;

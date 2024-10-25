@@ -71,7 +71,7 @@ function App() {
           <Route exact path="/admineventpost" element={<AdminEventPost />}></Route>
           <Route exact path="/adminschedulepost" element={<AdminSchedulePost />}></Route>
           <Route exact path="/adminhome" element={<AdminHome />}></Route>
-          <Route exact path="/adminlogin" element={<AdminLogin />}></Route>
+          <Route exact path="/command" element={<AdminLogin />}></Route>
           <Route exact path="/create-reservation-settings" element={<CreateReservationSettings />}></Route>
           <Route exact path="/create-reservation-template" element={<CreateReservationTemplate />}></Route>
           <Route exact path="/reservation-check" element={<ReservationStatusPage />}></Route>
