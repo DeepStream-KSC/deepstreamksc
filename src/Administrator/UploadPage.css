@@ -1,4 +1,4 @@
-/* ページ全体のレイアウト */
+ページ全体のレイアウト
 .upload-container {
     display: flex;
     flex-direction: column;
@@ -23,21 +23,6 @@ input[type="file"] {
     border-radius: 4px;
     background-color: #fff;
     cursor: pointer;
-}
-
-/* アップロードボタンのスタイル */
-button {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #0056b3;
 }
 
 /* アップロード中のボタンを無効化 */
